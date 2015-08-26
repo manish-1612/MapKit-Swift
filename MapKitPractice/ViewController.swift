@@ -15,7 +15,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
 
     @IBOutlet weak var mapView: MKMapView!
     var locationManager: CLLocationManager!
-    var locationArray: [CLLocationCoordinate2D] = []
+    var previousLocation : CLLocation!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.desiredAccuracy = kCLLocationAccuracyBest;
         locationManager.delegate = self;
         
-        // user activated automatic attraction info mode
+        // user activated automatic authorization info mode
         var status = CLLocationManager.authorizationStatus()
         if status == .NotDetermined || status == .Denied || status == .AuthorizedWhenInUse {
             // present an alert indicating location authorization required
@@ -37,6 +37,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.startUpdatingLocation()
         locationManager.startUpdatingHeading()
         
+        
+        //mapview setup to show user location
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType(rawValue: 0)!
@@ -62,19 +64,30 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     // MARK :- CLLocationManager delegate
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        //code for user tracking
-        var userCoordinate = newLocation.coordinate
-        
-        if let userCoordinateNew = userCoordinate as CLLocationCoordinate2D? {
-            locationArray.append(CLLocationCoordinate2DMake(userCoordinateNew.latitude, userCoordinateNew.longitude))
-        }
-        
+        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+
+        //drawing path or route covered
         if let oldLocationNew = oldLocation as CLLocation?{
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
             var a = [oldCoordinates, newCoordinates]
             var polyline = MKPolyline(coordinates: &a, count: a.count)
             mapView.addOverlay(polyline)
+        }
+        
+        
+        //calculation for location selection for pointing annoation
+        if let previousLocationNew = previousLocation as CLLocation?{
+            //case if previous location exists
+            println("distance : \(previousLocation.distanceFromLocation(newLocation))")
+            if previousLocation.distanceFromLocation(newLocation) > 100 {
+                addAnnotationsOnMap(newLocation)
+                previousLocation = newLocation
+            }
+        }else{
+            //case if previous location doesn't exists
+            addAnnotationsOnMap(newLocation)
+            previousLocation = newLocation
         }
     }
     
@@ -90,4 +103,23 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         
         return nil
     }
+    
+    //function to add annotation to map view
+    func addAnnotationsOnMap(locationToPoint : CLLocation){
+        
+        var annotation = MKPointAnnotation()
+        annotation.coordinate = locationToPoint.coordinate
+        var geoCoder = CLGeocoder ()
+        geoCoder.reverseGeocodeLocation(locationToPoint, completionHandler: { (placemarks, error) -> Void in
+            if let placemarks = placemarks as? [CLPlacemark] where placemarks.count > 0 {
+                var placemark = placemarks[0]
+                var addressDictionary = placemark.addressDictionary;
+                println("ADDRESS : \(addressDictionary)")
+                annotation.title = addressDictionary["Name"] as? String
+                self.mapView.addAnnotation(annotation)
+                
+            }
+        })
+    }
+    
 }

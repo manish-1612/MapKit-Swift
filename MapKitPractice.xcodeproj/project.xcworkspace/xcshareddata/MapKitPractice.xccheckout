@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>E2800371-B4EA-42D7-ACE1-E0E862B5EA16</string>
 	<key>IDESourceControlProjectName</key>
-	<string>MapKitPractice</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>6425B594C9439FF7B7A7851968BDBBD12D7C467A</key>
 		<string>https://github.com/manishatinnofied/MapKit-Swift.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>MapKitPractice.xcodeproj</string>
+	<string>MapKitPractice.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>6425B594C9439FF7B7A7851968BDBBD12D7C467A</key>
