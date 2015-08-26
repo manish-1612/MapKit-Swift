@@ -41,8 +41,6 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         mapView.showsUserLocation = true
         mapView.mapType = MKMapType(rawValue: 0)!
         mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
-        mapView.showsBuildings = true
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +60,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         locationManager.stopUpdatingLocation()
     }
     
+    // MARK :- CLLocationManager delegate
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         //code for user tracking
         var userCoordinate = newLocation.coordinate
@@ -70,24 +69,25 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             locationArray.append(CLLocationCoordinate2DMake(userCoordinateNew.latitude, userCoordinateNew.longitude))
         }
         
-        /*
-        for coordinate in locationArray{
-            println("coordinate : \(coordinate.latitude),\(coordinate.longitude)")
-        }*/
-    }
-    
-    @IBAction func showRouteCovered(sender: AnyObject) {
-        self .performSegueWithIdentifier("routeSegue", sender: self)
-    }
-    
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "routeSegue" {
-            var routeController : RouteVC = segue.destinationViewController as! RouteVC
-            
-            if routeController .isKindOfClass(RouteVC){
-                routeController.arrayForLocation = locationArray
-            }
+        if let oldLocationNew = oldLocation as CLLocation?{
+            let oldCoordinates = oldLocationNew.coordinate
+            let newCoordinates = newLocation.coordinate
+            var a = [oldCoordinates, newCoordinates]
+            var polyline = MKPolyline(coordinates: &a, count: a.count)
+            mapView.addOverlay(polyline)
         }
+    }
+    
+    // MARK :- MKMapView delegate
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
+        if (overlay is MKPolyline) {
+            var pr = MKPolylineRenderer(overlay: overlay)
+            pr.strokeColor = UIColor.redColor()
+            pr.lineWidth = 5
+            return pr
+        }
+        
+        return nil
     }
 }

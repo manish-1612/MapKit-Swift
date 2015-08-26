@@ -13,55 +13,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="cFp-Ib-7k3">
-                                <rect key="frame" x="0.0" y="66" width="320" height="462"/>
+                                <rect key="frame" x="9" y="72" width="304" height="486"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ngK-EM-JMi">
-                                <rect key="frame" x="81" y="536" width="143" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Show Route covered">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showRouteCovered:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MxP-MO-EG4"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="User Location" id="5dd-fg-vGi"/>
                     <connections>
                         <outlet property="mapView" destination="cFp-Ib-7k3" id="j1s-vg-NY2"/>
-                        <segue destination="NTh-OJ-Opm" kind="push" identifier="routeSegue" id="Voe-4x-OSP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="629" y="144"/>
-        </scene>
-        <!--Route-->
-        <scene sceneID="xY8-qg-Zlb">
-            <objects>
-                <viewController id="NTh-OJ-Opm" customClass="RouteVC" customModule="MapKitPractice" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="q2e-Bi-Yum">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="KbE-cC-9Vk">
-                                <rect key="frame" x="0.0" y="66" width="320" height="502"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </mapView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Route" id="6df-2a-umv"/>
-                    <connections>
-                        <outlet property="mapview" destination="KbE-cC-9Vk" id="ste-iV-oFq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CaG-xQ-cad" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1045" y="139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zHd-7b-sY4">

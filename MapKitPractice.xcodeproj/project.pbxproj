@@ -15,7 +15,6 @@
 		796FCAD61B8B540D0089EDDD /* MapKitPracticeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796FCAD51B8B540D0089EDDD /* MapKitPracticeTests.swift */; };
 		796FCAE01B8B543A0089EDDD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796FCADF1B8B543A0089EDDD /* MapKit.framework */; };
 		79EE02501B8C40D5001ED1A4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79EE024F1B8C40D5001ED1A4 /* CoreLocation.framework */; };
-		79EE02541B8C5670001ED1A4 /* RouteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79EE02531B8C5670001ED1A4 /* RouteVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +40,6 @@
 		796FCAD51B8B540D0089EDDD /* MapKitPracticeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitPracticeTests.swift; sourceTree = "<group>"; };
 		796FCADF1B8B543A0089EDDD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		79EE024F1B8C40D5001ED1A4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		79EE02531B8C5670001ED1A4 /* RouteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,7 +87,6 @@
 			children = (
 				796FCABF1B8B540D0089EDDD /* AppDelegate.swift */,
 				796FCAC11B8B540D0089EDDD /* ViewController.swift */,
-				79EE02531B8C5670001ED1A4 /* RouteVC.swift */,
 				796FCAC31B8B540D0089EDDD /* Main.storyboard */,
 				796FCAC61B8B540D0089EDDD /* Images.xcassets */,
 				796FCAC81B8B540D0089EDDD /* LaunchScreen.xib */,
@@ -224,7 +221,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				796FCAC21B8B540D0089EDDD /* ViewController.swift in Sources */,
-				79EE02541B8C5670001ED1A4 /* RouteVC.swift in Sources */,
 				796FCAC01B8B540D0089EDDD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

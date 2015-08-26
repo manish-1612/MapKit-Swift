@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E2800371-B4EA-42D7-ACE1-E0E862B5EA16</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MapKitPractice</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6425B594C9439FF7B7A7851968BDBBD12D7C467A</key>
+		<string>https://github.com/manishatinnofied/MapKit-Swift.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>MapKitPractice.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6425B594C9439FF7B7A7851968BDBBD12D7C467A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/manishatinnofied/MapKit-Swift.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6425B594C9439FF7B7A7851968BDBBD12D7C467A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6425B594C9439FF7B7A7851968BDBBD12D7C467A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MapKitPractice</string>
+		</dict>
+	</array>
+</dict>
+</plist>
