@@ -48,7 +48,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        mapView.mapType = MKMapType(rawValue: 2)!
+        mapView.mapType = MKMapType(rawValue: 0)!
     }
     
     
@@ -64,14 +64,15 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     
     // MARK :- CLLocationManager delegate
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
-        mapView.userTrackingMode = MKUserTrackingMode(rawValue: 2)!
+        
+        //println("present location : \(newLocation.coordinate.latitude),\(newLocation.coordinate.longitude)")
 
         //drawing path or route covered
         if let oldLocationNew = oldLocation as CLLocation?{
             let oldCoordinates = oldLocationNew.coordinate
             let newCoordinates = newLocation.coordinate
-            var a = [oldCoordinates, newCoordinates]
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
+            var area = [oldCoordinates, newCoordinates]
+            var polyline = MKPolyline(coordinates: &area, count: area.count)
             mapView.addOverlay(polyline)
         }
         
@@ -79,8 +80,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         //calculation for location selection for pointing annoation
         if let previousLocationNew = previousLocation as CLLocation?{
             //case if previous location exists
-            println("distance : \(previousLocation.distanceFromLocation(newLocation))")
-            if previousLocation.distanceFromLocation(newLocation) > 100 {
+            if previousLocation.distanceFromLocation(newLocation) > 200 {
                 addAnnotationsOnMap(newLocation)
                 previousLocation = newLocation
             }
@@ -114,10 +114,8 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             if let placemarks = placemarks as? [CLPlacemark] where placemarks.count > 0 {
                 var placemark = placemarks[0]
                 var addressDictionary = placemark.addressDictionary;
-                println("ADDRESS : \(addressDictionary)")
                 annotation.title = addressDictionary["Name"] as? String
                 self.mapView.addAnnotation(annotation)
-                
             }
         })
     }
